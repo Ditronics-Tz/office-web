@@ -1,65 +1,79 @@
-import Image from "next/image";
+import { HeroSlider } from "@/components/sections/hero-slider";
+import { TextImage } from "@/components/ui/text-image";
+import { WorkInAction } from "@/components/sections/work-in-action";
+import { IndustriesGrid } from "@/components/sections/industries-grid";
+import { LatestInsights } from "@/components/sections/latest-insights";
+import { ContactCta } from "@/components/sections/contact-cta";
+import { unsplash } from "@/lib/img";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <HeroSlider />
+
+      <TextImage
+        reverse
+        kicker="Who we are"
+        title={
+          <>
+            From idea to <span className="text-navy">in&nbsp;production</span>, we
+            build technology that gets used.
+          </>
+        }
+        body={[
+          "Ditronics is a technology company in Kigamboni, Dar es Salaam. We build software, IoT monitoring systems and visual media for organisations across Tanzania — and we build them to be used, not just demonstrated.",
+          "Whether you need a single API, a full enterprise platform, a field of sensors or a photo shoot, you have one team accountable for getting it built and keeping it running.",
+        ]}
+        ctas={[
+          { label: "About us", href: "/about" },
+          { label: "Our services", href: "/services", variant: "outline" },
+        ]}
+        figureSrc={unsplash("photo-1522071820081-009f0129c71c", 1000)}
+        figureLabel="Studio — Kigamboni"
+      />
+
+      <WorkInAction />
+
+      <IndustriesGrid />
+
+      <TextImage
+        kicker="How we work"
+        title={
+          <>
+            Practical advice. <span className="text-navy">Real delivery.</span>
+          </>
+        }
+        body={[
+          "We don't just scope strategy — we ship the thing. A team of engineers, IoT specialists and photographers who turn a plan into working software, live dashboards and finished media.",
+          "We work in short, reviewable increments, so you see the real thing early and often, and we stay on after launch to keep it healthy.",
+        ]}
+        ctas={[{ label: "Our process", href: "/services", variant: "ghost" }]}
+        figureSrc={unsplash("photo-1600880292203-757bb62b4baf", 1000)}
+        figureLabel="Build / reviewable increments"
+      />
+
+      <TextImage
+        reverse
+        tone="dark"
+        kicker="Work with us"
+        title={
+          <>
+            Join a team building <span className="text-accent">real things</span> in
+            Tanzania.
+          </>
+        }
+        body={[
+          "We need the right people in the right places — engineers, makers and creators who want their work to matter beyond the demo.",
+          "If you build software, wire up hardware or make images for a living, we'd like to hear from you.",
+        ]}
+        ctas={[{ label: "Get in touch", href: "/contact" }]}
+        figureSrc={unsplash("photo-1517048676732-d65bc937f952", 1000)}
+        figureLabel="Team — Ditronics"
+      />
+
+      <LatestInsights />
+
+      <ContactCta />
+    </>
   );
 }

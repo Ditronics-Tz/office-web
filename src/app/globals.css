@@ -1,26 +1,178 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Ditronics design system
+  ------------------------------------------------------------------
+  Editorial / technical corporate. White paper, charcoal ink, a single
+  deep-navy accent used sparingly. No gradients, no glass, no neon.
+*/
+
+@theme {
+  /* Ink — warm-neutral charcoals for an editorial, printed feel */
+  --color-ink: #1b1d1f;
+  --color-ink-soft: #54585c;
+  --color-ink-faint: #8b8e92;
+
+  /* Surfaces */
+  --color-paper: #f5f4f1; /* off-white section band */
+  --color-paper-deep: #ecebe6;
+  --color-line: #e6e4df; /* hairline rules */
+  --color-line-strong: #d6d3cc;
+
+  /* Brand accent — deep cyan drawn from the logo's network nodes.
+     Token name kept as `navy` so existing utilities (bg-navy / text-navy)
+     pick up the new colour without churn. Tuned dark enough for white text. */
+  --color-navy: #0b6f96;
+  --color-navy-soft: #095877;
+  --color-navy-faint: #e6f5fb; /* pale cyan tint band */
+
+  /* Bright cyan — filled action buttons (FABs) and highlight words on dark plum */
+  --color-accent: #2dc0ec;
+
+  /* Soft cyan band — section background (à la Worley's mint band) */
+  --color-mist: #d3eef4;
+
+  /* Dark surfaces for footer / inverted blocks / Worley-style bands —
+     plum drawn from the logo background */
+  --color-ink-deep: #2b1a32; /* deep plum: footer, inverted CTA */
+  --color-band: #3a2440; /* plum band: hero, dark sections */
+
+  /* Type — bold sans display throughout (Worley dialect) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  --spacing-shell: 80rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-line);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #ffffff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-navy);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Editorial shell */
+  .shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: var(--spacing-shell);
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  /* Full-bleed horizontal rail: spans the viewport, but its inline padding
+     matches `.shell` so the first/last cards line up with page content. */
+  .rail {
+    padding-inline: max(1.5rem, calc((100vw - var(--spacing-shell)) / 2 + 1.5rem));
+    scroll-padding-inline: max(1.5rem, calc((100vw - var(--spacing-shell)) / 2 + 1.5rem));
+  }
+  @media (min-width: 768px) {
+    .rail {
+      padding-inline: max(2.5rem, calc((100vw - var(--spacing-shell)) / 2 + 2.5rem));
+      scroll-padding-inline: max(2.5rem, calc((100vw - var(--spacing-shell)) / 2 + 2.5rem));
+    }
+  }
+  @media (min-width: 1280px) {
+    .rail {
+      padding-inline: max(3.5rem, calc((100vw - var(--spacing-shell)) / 2 + 3.5rem));
+      scroll-padding-inline: max(3.5rem, calc((100vw - var(--spacing-shell)) / 2 + 3.5rem));
+    }
+  }
+
+  /* Mono kicker / eyebrow used to label sections */
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-navy);
+  }
+
+  .lede {
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--color-ink-soft);
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  /* Subtle, single-purpose reveal. No bounce, no flash. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
