@@ -69,6 +69,10 @@ export default function StudioPage() {
         kicker="Ditronics Photo Studio"
         title="Professional photography & video, end to end."
         intro="Beyond technology, Ditronics runs a fully equipped photo and video studio — helping brands, businesses and individuals look their best with striking, professional imagery."
+        imageSrc={unsplash("photo-1502920917128-1aa500764cbd", 1100)}
+        imageAlt="Photographer working with a camera"
+        imageCaption="Photo / video / post-production"
+        layout="feature"
       />
 
       {/* Studio services */}

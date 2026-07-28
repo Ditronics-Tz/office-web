@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Figure } from "@/components/ui/figure";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/content/site";
+import { unsplash } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -123,6 +124,10 @@ export default function ProjectsPage() {
         kicker="Projects"
         title="Systems in production."
         intro="We let the work speak. Here are two platforms we designed, built and continue to support — with the reasoning behind each."
+        imageSrc={unsplash("photo-1517694712202-14dd9538aa97", 1100)}
+        imageAlt="Laptop running a development environment"
+        imageCaption="Selected work / 2024—25"
+        layout="split"
       />
 
       {projects.map((project) => (

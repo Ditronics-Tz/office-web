@@ -5,6 +5,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Figure } from "@/components/ui/figure";
 import { Kicker } from "@/components/ui/kicker";
 import { company } from "@/content/site";
+import { unsplash } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -23,6 +24,10 @@ export default function ContactPage() {
         kicker="Contact"
         title="Let's talk about your project."
         intro="Whether it is a system to build, something to monitor or work to photograph — send us the details and we will reply with specific next steps."
+        imageSrc={unsplash("photo-1497366216548-37526070297c", 1100)}
+        imageAlt="A bright collaborative workspace"
+        imageCaption="Kibada / Kigamboni / Dar es Salaam"
+        layout="offset"
       />
 
       <section className="border-b border-line py-20 lg:py-28">

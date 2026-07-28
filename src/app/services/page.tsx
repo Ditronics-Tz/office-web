@@ -6,6 +6,7 @@ import { ContactCta } from "@/components/sections/contact-cta";
 import { Reveal } from "@/components/ui/reveal";
 import { Kicker } from "@/components/ui/kicker";
 import { techStack } from "@/content/site";
+import { unsplash } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -20,6 +21,10 @@ export default function ServicesPage() {
         kicker="Services"
         title="What we design, build and support."
         intro="Three practices that work together: software engineering, IoT systems and a photography studio. Below is what each one covers and the tools behind it."
+        imageSrc={unsplash("photo-1518770660439-4636190af475", 1100)}
+        imageAlt="Close-up of electronic components"
+        imageCaption="Software / hardware / media"
+        layout="feature"
       />
 
       <ServicesEditorial heading={false} withFigures />

@@ -5,6 +5,7 @@ import { Figure } from "@/components/ui/figure";
 import { Kicker } from "@/components/ui/kicker";
 import { ContactCta } from "@/components/sections/contact-cta";
 import { company } from "@/content/site";
+import { unsplash } from "@/lib/img";
 
 export const metadata: Metadata = {
   title: "About",
@@ -43,20 +44,10 @@ export default function AboutPage() {
           </>
         }
         intro="We are a small, multidisciplinary team building software, IoT systems and creative media for organisations across Tanzania and the wider region."
-        meta={
-          <div className="border-t border-line pt-5">
-            <p className="font-mono text-xs uppercase tracking-wider text-ink-faint">
-              Based in
-            </p>
-            <p className="mt-3 leading-relaxed text-ink">
-              {company.address.street}
-              <br />
-              {company.address.district}
-              <br />
-              {company.address.city}
-            </p>
-          </div>
-        }
+        imageSrc={unsplash("photo-1522071820081-009f0129c71c", 1100)}
+        imageAlt="A collaborative team at work"
+        imageCaption={`Based in / ${company.address.district}, ${company.address.city}`}
+        layout="offset"
       />
 
       {/* Story */}
