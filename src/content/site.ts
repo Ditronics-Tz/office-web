@@ -16,7 +16,7 @@ export const company = {
   locale: "en_TZ",
   founded: "Dar es Salaam",
   email: "info@ditronics.co.tz",
-  phone: "+255 700 000 000",
+  phone: "+255 623 630 811",
   whatsapp: "+255700000000",
   address: {
     street: "Shangwe Street, Kibada",
